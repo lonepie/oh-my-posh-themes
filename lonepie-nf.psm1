@@ -77,7 +77,7 @@ function Write-Theme {
     }
 
     Write-Prompt -Object $sl.PromptSymbols.SegmentBackwardSymbol -ForegroundColor $sl.Colors.TimeBackgroundColor
-    Write-Host $timeStamp -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.TimeBackgroundColor
+    Write-Host $timeStamp -ForegroundColor $sl.Colors.TimeForegroundColor -BackgroundColor $sl.Colors.TimeBackgroundColor
 
     if ($with) {
         Write-Prompt -Object "$($with.ToUpper()) " -BackgroundColor $sl.Colors.WithBackgroundColor -ForegroundColor $sl.Colors.WithForegroundColor
@@ -123,7 +123,8 @@ $sl.PromptSymbols.SucceedCommandSymbol = [char]::ConvertFromUtf32(0xF00C)
 $sl.Colors.CommandSucceededIconForegroundColor = [ConsoleColor]::DarkGreen
 $sl.Colors.PathBackgroundColor = [System.ConsoleColor]::DarkGray
 $sl.Colors.PathForegroundColor = [ConsoleColor]::White
-$sl.Colors.TimeBackgroundColor = [ConsoleColor]::DarkGray
+$sl.Colors.TimeBackgroundColor = [ConsoleColor]::Gray
+$sl.Colors.TimeForegroundColor = [ConsoleColor]::DarkGray
 
 #Terminal-specific
 if ($env:TERM_PROGRAM -eq "Hyper") {
