@@ -110,10 +110,10 @@ $sl.Colors.PromptHighlightColor = [ConsoleColor]::DarkBlue
 $sl.Colors.GitForegroundColor = [ConsoleColor]::Black
 $sl.Colors.WithForegroundColor = [ConsoleColor]::DarkRed
 $sl.Colors.WithBackgroundColor = [ConsoleColor]::Magenta
-$sl.Colors.VirtualEnvBackgroundColor = [System.ConsoleColor]::Red
-$sl.Colors.VirtualEnvForegroundColor = [System.ConsoleColor]::White
+$sl.Colors.VirtualEnvBackgroundColor = [ConsoleColor]::Red
+$sl.Colors.VirtualEnvForegroundColor = [ConsoleColor]::White
 $sl.Colors.SessionInfoBackgroundColor = [ConsoleColor]::Green
-$sl.Colors.AdminIconForegroundColor = [System.ConsoleColor]::Yellow
+$sl.Colors.AdminIconForegroundColor = [ConsoleColor]::Yellow
 
 #Customizations
 $sl.PromptSymbols.HomeSymbol = [char]::ConvertFromUtf32(0xF015)
@@ -121,7 +121,7 @@ $sl.PromptSymbols.DriveRootSymbol = [char]::ConvertFromUtf32(0xF67C)
 $sl.PromptSymbols.TimeStampSymbol = [char]::ConvertFromUtf32(0xF017)
 $sl.PromptSymbols.SucceedCommandSymbol = [char]::ConvertFromUtf32(0xF00C)
 $sl.Colors.CommandSucceededIconForegroundColor = [ConsoleColor]::DarkGreen
-$sl.Colors.PathBackgroundColor = [System.ConsoleColor]::DarkGray
+$sl.Colors.PathBackgroundColor = [ConsoleColor]::DarkGray
 $sl.Colors.PathForegroundColor = [ConsoleColor]::White
 $sl.Colors.TimeBackgroundColor = [ConsoleColor]::Gray
 $sl.Colors.TimeForegroundColor = [ConsoleColor]::DarkGray
