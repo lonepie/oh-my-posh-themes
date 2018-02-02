@@ -64,6 +64,7 @@ function Write-Theme {
 
     $timeStamp = Get-Date -UFormat %T
     $timeStamp = " $($sl.PromptSymbols.TimeStampSymbol) $timeStamp "
+    #$timeStampStartAt = [System.Text.Encoding]::GetEncoding("UTF-8").GetByteCount($timestamp)
     $timeStampLength = $timeStamp.Length + 2
 
     Set-CursorForRightBlockWrite -textLength $timeStampLength
@@ -81,6 +82,7 @@ function Write-Theme {
 
     if ($with) {
         Write-Prompt -Object "$($with.ToUpper()) " -BackgroundColor $sl.Colors.WithBackgroundColor -ForegroundColor $sl.Colors.WithForegroundColor
+        Write-Prompt -Object $sl.PromptSymbols.SegmentForwardSymbol -ForegroundColor $sl.Colors.WithBackgroundColor
     }
 
     #check for elevated prompt
@@ -108,8 +110,8 @@ $sl.Colors.PromptForegroundColor = [ConsoleColor]::White
 $sl.Colors.PromptSymbolColor = [ConsoleColor]::White
 $sl.Colors.PromptHighlightColor = [ConsoleColor]::DarkBlue
 $sl.Colors.GitForegroundColor = [ConsoleColor]::Black
-$sl.Colors.WithForegroundColor = [ConsoleColor]::DarkRed
-$sl.Colors.WithBackgroundColor = [ConsoleColor]::Magenta
+$sl.Colors.WithForegroundColor = [ConsoleColor]::DarkYellow
+$sl.Colors.WithBackgroundColor = [ConsoleColor]::Black
 $sl.Colors.VirtualEnvBackgroundColor = [ConsoleColor]::Red
 $sl.Colors.VirtualEnvForegroundColor = [ConsoleColor]::White
 $sl.Colors.SessionInfoBackgroundColor = [ConsoleColor]::Green
