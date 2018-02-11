@@ -39,6 +39,12 @@ function Write-Theme {
     #Write-Prompt -Object "$path " -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
     # $path = Get-ShortPath -dir $pwd
     $path = Get-FullPath -dir $pwd
+    if($path.Length -gt $sl.PromptSymbols.MaxPathLength) {
+        $path = Get-ShortPath -dir $pwd
+    }
+    else {
+        $path = $path.Replace($sl.PromptSymbols.PathSeparator, $sl.PromptSymbols.FullPathSeparator)
+    }
     if($path.Contains("~")) {
         # $path = [char]::ConvertFromUtf32(0xF015) + ' ' + $path
         $path = $path.Replace("~", $sl.PromptSymbols.HomeSymbol + " ~")
@@ -101,7 +107,7 @@ $sl.PromptSymbols.SegmentSeparatorBackwardSymbol = [char]::ConvertFromUtf32(0xE0
 $sl.PromptSymbols.FailedCommandSymbol = [char]::ConvertFromUtf32(0xF00D)
 $sl.PromptSymbols.TruncatedFolderSymbol = [char]::ConvertFromUtf32(0xE5FF)
 # $sl.PromptSymbols.PathSeparator = ' ' + [char]::ConvertFromUtf32(0xE0B1) + ' '
-$sl.PromptSymbols.PathSeparator = ' ' + [char]::ConvertFromUtf32(0xE0B1) + ' ' + $sl.PromptSymbols.TruncatedFolderSymbol + ' '
+$sl.PromptSymbols.PathSeparator = ' ' + [char]::ConvertFromUtf32(0xE0B1) + ' '
 #Colors
 $sl.Colors.PromptForegroundColor = [ConsoleColor]::White
 $sl.Colors.PromptSymbolColor = [ConsoleColor]::White
@@ -119,6 +125,8 @@ $sl.PromptSymbols.HomeSymbol = [char]::ConvertFromUtf32(0xF015)
 $sl.PromptSymbols.DriveRootSymbol = [char]::ConvertFromUtf32(0xF67C)
 $sl.PromptSymbols.TimeStampSymbol = [char]::ConvertFromUtf32(0xF017)
 $sl.PromptSymbols.SucceedCommandSymbol = [char]::ConvertFromUtf32(0xF00C)
+$sl.PromptSymbols.FullPathSeparator = $sl.PromptSymbols.PathSeparator + $sl.PromptSymbols.TruncatedFolderSymbol + ' '
+$sl.PromptSymbols.MaxPathLength = 60
 $sl.Colors.CommandSucceededIconForegroundColor = [ConsoleColor]::DarkGreen
 $sl.Colors.PathBackgroundColor = [ConsoleColor]::DarkGray
 $sl.Colors.PathForegroundColor = [ConsoleColor]::White
