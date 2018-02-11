@@ -21,13 +21,10 @@ function Write-Theme {
     $user = [Environment]::UserName
     $computer = $env:computername
     # $path = Get-FullPath -dir $pwd
-    if (Test-NotDefaultUser($user)) {
+    if (Test-NotDefaultUser($user) -or $env:SSH_CLIENT) {
         Write-Prompt -Object "$user@$computer " -ForegroundColor $sl.Colors.SessionInfoForegroundColor -BackgroundColor $sl.Colors.SessionInfoBackgroundColor
-        Write-Prompt -Object "$($sl.PromptSymbols.SegmentForwardSymbol) " -ForegroundColor $sl.Colors.SessionInfoBackgroundColor -BackgroundColor $sl.Colors.PathBackgroundColor
     }
-    else {
-        Write-Prompt -Object "$($sl.PromptSymbols.SegmentForwardSymbol) " -ForegroundColor $sl.Colors.SessionInfoBackgroundColor -BackgroundColor $sl.Colors.PathBackgroundColor
-    }
+    Write-Prompt -Object "$($sl.PromptSymbols.SegmentForwardSymbol) " -ForegroundColor $sl.Colors.SessionInfoBackgroundColor -BackgroundColor $sl.Colors.PathBackgroundColor
 
     # if (Test-VirtualEnv) {
     #     Write-Prompt -Object "$($sl.PromptSymbols.SegmentForwardSymbol) " -ForegroundColor $sl.Colors.SessionInfoBackgroundColor -BackgroundColor $sl.Colors.VirtualEnvBackgroundColor
