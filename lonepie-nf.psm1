@@ -36,8 +36,6 @@ function Write-Theme {
     # }
 
     # Writes the drive portion
-    #Write-Prompt -Object "$path " -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
-    # $path = Get-ShortPath -dir $pwd
     $path = Get-FullPath -dir $pwd
     if($path.Length -gt $sl.PromptSymbols.MaxPathLength) {
         $path = Get-ShortPath -dir $pwd
@@ -46,7 +44,6 @@ function Write-Theme {
         $path = $path.Replace($sl.PromptSymbols.PathSeparator, $sl.PromptSymbols.FullPathSeparator)
     }
     if($path.Contains("~")) {
-        # $path = [char]::ConvertFromUtf32(0xF015) + ' ' + $path
         $path = $path.Replace("~", $sl.PromptSymbols.HomeSymbol + " ~")
     }
     else {
@@ -106,7 +103,6 @@ $sl.PromptSymbols.SegmentSeparatorForwardSymbol = [char]::ConvertFromUtf32(0xE0B
 $sl.PromptSymbols.SegmentSeparatorBackwardSymbol = [char]::ConvertFromUtf32(0xE0B3)
 $sl.PromptSymbols.FailedCommandSymbol = [char]::ConvertFromUtf32(0xF00D)
 $sl.PromptSymbols.TruncatedFolderSymbol = [char]::ConvertFromUtf32(0xE5FF)
-# $sl.PromptSymbols.PathSeparator = ' ' + [char]::ConvertFromUtf32(0xE0B1) + ' '
 $sl.PromptSymbols.PathSeparator = ' ' + [char]::ConvertFromUtf32(0xE0B1) + ' '
 #Colors
 $sl.Colors.PromptForegroundColor = [ConsoleColor]::White
