@@ -20,7 +20,6 @@ function Write-Theme {
 
     $user = [Environment]::UserName
     $computer = $env:computername
-    # $path = Get-FullPath -dir $pwd
     if ( (Test-NotDefaultUser($user)) -or ($env:SSH_CLIENT -ne $null) ) {
         Write-Prompt -Object "$user@$computer " -ForegroundColor $sl.Colors.SessionInfoForegroundColor -BackgroundColor $sl.Colors.SessionInfoBackgroundColor
     }
@@ -118,7 +117,7 @@ $sl.Colors.AdminIconForegroundColor = [ConsoleColor]::Yellow
 
 #Customizations
 $sl.PromptSymbols.HomeSymbol = [char]::ConvertFromUtf32(0xF015)
-$sl.PromptSymbols.DriveRootSymbol = [char]::ConvertFromUtf32(0xF67C)
+$sl.PromptSymbols.DriveRootSymbol = [char]::ConvertFromUtf32(0xF472)
 $sl.PromptSymbols.TimeStampSymbol = [char]::ConvertFromUtf32(0xF017)
 $sl.PromptSymbols.SucceedCommandSymbol = [char]::ConvertFromUtf32(0xF00C)
 $sl.PromptSymbols.FullPathSeparator = $sl.PromptSymbols.PathSeparator + $sl.PromptSymbols.TruncatedFolderSymbol + ' '
